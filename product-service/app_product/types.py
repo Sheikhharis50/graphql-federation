@@ -1,7 +1,17 @@
 import strawberry
+
+# from strawberry.dataloader import DataLoader
+# from typing import Any, List
 from .services import ProductService
 
 product_service = ProductService()
+
+
+# async def load_products(keys: List[int]) -> List[Any]:
+#     return product_service.get_by_ids(keys)
+
+
+# loader = DataLoader(load_fn=load_products)
 
 
 @strawberry.type
@@ -18,10 +28,13 @@ class ProductType:
     category: CategoryType
 
     @classmethod
+    # async def resolve_reference(cls, id: strawberry.ID):
     def resolve_reference(cls, id: strawberry.ID):
-        # here we could fetch the book from the database
-        # or even from an API
-        product = product_service.get_by_id(id)
+        """
+        FIXME: we need to resolve N+1 problem here
+        """
+        product = product_service.get_by_id(id=id)
+        # product = await loader.load(id)
         return ProductType(
             id=id,
             name=product.name,
