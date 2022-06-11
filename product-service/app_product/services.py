@@ -10,7 +10,7 @@ class ProductService:
 
     def get_by_id(self, id: int):
         try:
-            return self.model.objects.get(id=id)
+            return self.model.objects.select_related(*self.related_fields).get(id=id)
         except self.model.DoesNotExist:
             return None
 
