@@ -1,0 +1,4 @@
+[
+  { "model": "app_product.Category", "pk": 1, "fields": { "name": "women" } },
+  { "model": "app_product.Category", "pk": 2, "fields": { "name": "men" } }
+]

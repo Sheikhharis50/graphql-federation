@@ -1,0 +1,23 @@
+[
+  {
+    "model": "app_shop.ShopProduct",
+    "pk": 1,
+    "fields": {
+      "shop_id": 1
+    }
+  },
+  {
+    "model": "app_shop.ShopProduct",
+    "pk": 2,
+    "fields": {
+      "shop_id": 1
+    }
+  },
+  {
+    "model": "app_shop.ShopProduct",
+    "pk": 3,
+    "fields": {
+      "shop_id": 2
+    }
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "model": "app_product.Product",
+    "pk": 1,
+    "fields": {
+      "name": "Product 1",
+      "description": "Product 1 description",
+      "category": 1
+    }
+  },
+  {
+    "model": "app_product.Product",
+    "pk": 2,
+    "fields": {
+      "name": "Product 2",
+      "description": "Product 2 description",
+      "category": 1
+    }
+  },
+  {
+    "model": "app_product.Product",
+    "pk": 3,
+    "fields": {
+      "name": "Product 3",
+      "description": "Product 3 description",
+      "category": 2
+    }
+  },
+  {
+    "model": "app_product.Product",
+    "pk": 4,
+    "fields": {
+      "name": "Product 4",
+      "description": "Product 4 description",
+      "category": 2
+    }
+  }
+]

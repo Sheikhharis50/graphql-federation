@@ -1,0 +1,26 @@
+[
+  {
+    "model": "app_shop.Shop",
+    "pk": 1,
+    "fields": {
+      "name": "Shop 1",
+      "description": "Shop 1 description"
+    }
+  },
+  {
+    "model": "app_shop.Shop",
+    "pk": 2,
+    "fields": {
+      "name": "Shop 2",
+      "description": "Shop 2 description"
+    }
+  },
+  {
+    "model": "app_shop.Shop",
+    "pk": 3,
+    "fields": {
+      "name": "Shop 3",
+      "description": "Shop 3 description"
+    }
+  }
+]
