@@ -10,10 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load operating system environment variables and then prepare to use them
+env = environ.Env()
+env.read_env(str(BASE_DIR / ".env"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -77,11 +82,17 @@ WSGI_APPLICATION = "app.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": f"django.db.backends.{env('DATABASE_ENGINE', default='sqlite3')}",
+        "NAME": env("DATABASE_NAME", default=f"{BASE_DIR}/db.sqlite3"),
+        "USER": env("DATABASE_USER"),
+        "PASSWORD": env("DATABASE_PASSWORD"),
+        "HOST": env("DATABASE_HOST"),
+        "PORT": env("DATABASE_PORT"),
+        "OPTIONS": {
+            "options": f"-c search_path={env('DATABASE_SCHEMA', default='public')}",
+        },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
