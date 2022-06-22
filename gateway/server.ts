@@ -1,5 +1,5 @@
 import { ApolloServer } from "apollo-server";
-import { ApolloGateway } from "@apollo/gateway";
+import { ApolloGateway, RemoteGraphQLDataSource } from "@apollo/gateway";
 
 const gateway = new ApolloGateway({
   serviceList: [
@@ -13,6 +13,14 @@ const gateway = new ApolloGateway({
     },
   ],
   experimental_pollInterval: 10000,
+  buildService({ url }) {
+    return new RemoteGraphQLDataSource({
+      url,
+      willSendRequest({ request, context }) {
+        request.http?.headers.set("Authorization", context.Authorization);
+      },
+    });
+  },
 });
 
 const server = new ApolloServer({
